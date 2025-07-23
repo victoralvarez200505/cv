@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+  <div class="theme-selector">
+    <button class="theme-btn" data-theme="blue">Azul</button>
+    <button class="theme-btn" data-theme="purple">Morado</button>
+    <button class="theme-btn" data-theme="green">Verde</button>
+    <button class="theme-btn" data-theme="orange">Naranja</button>
+  </div>
+  <nav class="menu">
+    <ul>
+      <li><a href="#sobre-mi">Sobre Mí</a></li>
+      <li><a href="#habilidades">Habilidades</a></li>
+      <li><a href="#conocimiento">Conocimiento</a></li>
+    </ul>
+  </nav>
+
+  <img src="./imagenes/conver.webp" alt="Imagen de fondo" class="background-watermark">
+  <div class="header-section">
+    <div class="name-container">
+      <h1>VICTOR <span class="highlight">ALVAREZ</span></h1>
+    </div>
+    <img src="./imagenes/perfil.png" alt="Foto de perfil" id="perfil">
+  </div>
+
+  <div id="sobre-mi">
+  <h2 class="info">SOBRE MI</h2>
+       <P>Soy estudiante de ingenieria en computacion, me considero una persona responsable, proactiva, con pensamiento
+        crítico, con facilidad de adaptación en diferentes entornos, dominó el paquete de office, tambien tengo un
+        amplio conocimiento matemático, conocimiento en programación, también manejo diferentes IA para optimizar mi
+        trabajo, además manejo analisis de datos, tambien puedo manejar situaciones complejas buscando la solución más
+        efectiva a los diferentes problemas, cuento con disponibilidad horaria completa</P>  
+  </div>
+
+  <div id="habilidades">
+     <h2 class="info">HABILIDADES</h2>
+      <p>
+        <ul>
+          <li>Pensamiento critico</li>
+          <li>Resolución de problemas</li>
+          <li>Análisis de datos</li>
+          <li>Comunicación efectiva</li>
+          <li>Trabajo en equipo</li>
+          <li>Proactivo</li>
+        </ul>
+      </p>
+  </div>
+    
+  <div id="conocimiento">
+    <h2 class="info">CONOCIMIENTO</h2>
+    <p>
+      <ul>
+        <li>Paquete Office</li>
+        <li>Canva</li>
+        <li>Algebra</li>
+        <li>Analisis de datos</li>
+        <li>Programación</li>
+        <li>Comunicación efectiva</li>
+        <li>Atención al publico</li>
+      </ul>
+    </p>
+  </div>
+  <div class="decorative-images">
+    <img src="./imagenes/seguridad.png" alt="" class="decorative-left">
+    <img src="./imagenes/compu.png" alt="" class="decorative-right">
+  </div>
+  <script>
+    // Establecer tema por defecto
+    document.body.setAttribute('data-theme', 'blue');
+
+    // Obtener todos los botones de tema
+    const themeButtons = document.querySelectorAll('.theme-btn');
+
+    // Añadir evento click a cada botón
+    themeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const theme = button.getAttribute('data-theme');
+        document.body.setAttribute('data-theme', theme);
+      });
+    });
+  </script>
+
+</body>
+
+</html>
+
+
