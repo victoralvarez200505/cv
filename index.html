@@ -73,18 +73,62 @@
     <img src="./imagenes/compu.png" alt="" class="decorative-right">
   </div>
   <script>
-    // Establecer tema por defecto
-    document.body.setAttribute('data-theme', 'blue');
+    // Establecer tema por defecto y guardarlo en localStorage
+    const defaultTheme = localStorage.getItem('selectedTheme') || 'blue';
+    document.body.setAttribute('data-theme', defaultTheme);
 
     // Obtener todos los botones de tema
     const themeButtons = document.querySelectorAll('.theme-btn');
 
     // Añadir evento click a cada botón
     themeButtons.forEach(button => {
+      // Marcar el botón activo al cargar
+      if (button.getAttribute('data-theme') === defaultTheme) {
+        button.classList.add('active');
+      }
+
       button.addEventListener('click', () => {
+        // Remover clase active de todos los botones
+        themeButtons.forEach(btn => btn.classList.remove('active'));
+        // Agregar clase active al botón seleccionado
+        button.classList.add('active');
+
         const theme = button.getAttribute('data-theme');
         document.body.setAttribute('data-theme', theme);
+        // Guardar tema en localStorage
+        localStorage.setItem('selectedTheme', theme);
       });
+    });
+
+    // Animación suave al hacer scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Animación de entrada para las secciones
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    // Observar las secciones principales
+    document.querySelectorAll('#sobre-mi, #habilidades, #conocimiento').forEach(section => {
+      section.classList.add('fade-in');
+      observer.observe(section);
     });
   </script>
 
